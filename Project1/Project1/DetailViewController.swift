@@ -21,6 +21,8 @@ class DetailViewController: UIViewController {
         if let imageToLoad = selectedImage {
             imageView.image = UIImage(named: imageToLoad)
         }
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(recomendApp))
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -31,5 +33,11 @@ class DetailViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.hidesBarsOnTap = false
+    }
+    
+    @objc func recomendApp() {
+        let ac = UIAlertController(title: "Please, recommend this app", message: "Please...", preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "Rate", style: .default))
+        present(ac, animated: true)
     }
 }
